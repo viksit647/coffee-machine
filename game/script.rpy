@@ -1,14 +1,14 @@
 
 # Coffee Vending Machine - Script
 
-# Variables
-default selected_coffee = "None"
-default milk_amount = 5
-default coffee_amount = 5
-default show_debug_area = True
+init -1:
+    # Variables
+    default selected_coffee = "None"
+    default milk_amount = 5
+    default coffee_amount = 5
+    default show_debug_area = True
 
 # Define images
-# RenPy automatically finds files in images/, but let's be explicit
 image bg_machine = "images/coffee_machine_final_2.png"
 
 label start:
@@ -29,8 +29,12 @@ label start:
         
         # Step 4: Result
         "The machine whirrs into action..."
-        "Your [selected_coffee] (Coffee: [coffee_amount], Milk: [milk_amount]) is ready! Enjoy!"
         
+        # Step 5: Reveal
+        call screen coffee_reveal
+        
+        # Reset and loop
+        $ selected_coffee = "None"
         jump main_loop
 
     return
