@@ -1,36 +1,36 @@
-# Coffee Vending Machine Script
 
-# Game state
-default selected_coffee = None
+# Coffee Vending Machine - Script
+
+# Variables
+default selected_coffee = "None"
 default milk_amount = 5
 default coffee_amount = 5
-default brewing = False
-
-# Debug flag for the interactive area outline
-define config.developer = True
 default show_debug_area = True
 
-image background_machine = "images/coffee_machine_final_2.png"
+# Define images
+# RenPy automatically finds files in images/, but let's be explicit
+image bg_machine = "images/coffee_machine_final_2.png"
 
 label start:
-    scene background_machine
+    # Use a solid color fallback if image fails to load
+    scene black
+    show bg_machine onlayer master:
+        xalign 0.5 yalign 0.5
     
-    # Main interaction loop
-    label interaction_loop:
+    label main_loop:
+        # Step 1: Click the machine
         call screen machine_interaction
         
-        # Once the machine is clicked, show the selection menu
-        call screen coffee_selection_menu
+        # Step 2: Choose Coffee
+        call screen coffee_selection
         
-        # After selecting coffee, show the customization menu
-        call screen customization_menu
+        # Step 3: Customize
+        call screen customization_screen
         
-        # Brewing animation or message
-        "Brewing your [selected_coffee]..."
-        "Your [selected_coffee] (Coffee: [coffee_amount], Milk: [milk_amount]) is ready!"
+        # Step 4: Result
+        "The machine whirrs into action..."
+        "Your [selected_coffee] (Coffee: [coffee_amount], Milk: [milk_amount]) is ready! Enjoy!"
         
-        # Reset and loop back
-        $ selected_coffee = None
-        jump interaction_loop
+        jump main_loop
 
     return
