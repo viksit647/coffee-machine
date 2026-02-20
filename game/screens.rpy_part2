@@ -1,0 +1,64 @@
+
+# 3. Customization Sliders
+screen customization_screen():
+    modal True
+    
+    # Gaussian blur effect on background
+    add "bg_machine":
+        blur 20
+    add Solid("#00000060") # Slight dark overlay
+    
+    vbox:
+        align (0.5, 0.5) # Center perfectly
+        spacing 50
+        
+        label "{b}CUSTOMIZE [selected_coffee]{/b}" xalign 0.5 text_size 50
+        
+        hbox:
+            spacing 400
+            xalign 0.5
+            yalign 0.5
+            
+            # Coffee Strength (Vertical)
+            vbox:
+                spacing 20
+                label "COFFEE" xalign 0.5 text_size 30
+                
+                fixed:
+                    xsize 80 ysize 400 xalign 0.5
+                    vbar value VariableValue("coffee_amount", 10):
+                        style "segmented_vbar"
+                        xsize 80 ysize 400
+                    
+                    vbox:
+                        yfill True
+                        for i in range(1, 10):
+                            null height 38
+                            add Solid("#00000050", xsize=80, ysize=2)
+                
+                text "[coffee_amount]" xalign 0.5 size 36 color "#ffcc00"
+            
+            # Milk Amount (Vertical)
+            vbox:
+                spacing 20
+                label "MILK" xalign 0.5 text_size 30
+                
+                fixed:
+                    xsize 80 ysize 400 xalign 0.5
+                    vbar value VariableValue("milk_amount", 10):
+                        style "segmented_vbar"
+                        xsize 80 ysize 400
+                    
+                    vbox:
+                        yfill True
+                        for i in range(1, 10):
+                            null height 38
+                            add Solid("#00000050", xsize=80, ysize=2)
+
+                text "[milk_amount]" xalign 0.5 size 36 color "#ffcc00"
+
+        null height 30
+        textbutton "BREW" action Return():
+            xalign 0.5 padding (60, 20)
+            background Solid("#4a2c2a")
+            hover_background Solid("#6a3c3a")

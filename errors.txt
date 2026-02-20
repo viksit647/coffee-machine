@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/screens.rpy", line 152: ATL statement contains two expressions in a row; is one of them a misspelled property? If not, separate them with pass.
+    maxwidth 400
+                ^
+
+Ren'Py Version: Ren'Py 8.4.1.25072401
+Sat Feb 21 01:24:29 2026
