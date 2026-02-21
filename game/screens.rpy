@@ -53,16 +53,19 @@ screen coffee_selection():
         hbox:
             spacing 40
             xalign 0.5
-            for c in [("Americano", "americano.png"), ("Latte", "latte.png"), ("Mocha", "mocha.png")]:
+            for c in [("Americano", "americano(1:1).png"), ("Latte", "latte(1:1).png"), ("Mocha", "mocha(1:1).png")]:
                 $ img = "images/" + c[1]
                 vbox:
                     spacing 10
-                    imagebutton:
-                        idle Image(img)
-                        hover Image(img)
-                        action [SetVariable("selected_coffee", c[0]), Return()]
-                        at transform:
-                            xysize (180, 180)
+                    frame:
+                        padding (4, 4)
+                        background Solid("#D2A43A") # Light Brown / Brownish color
+                        imagebutton:
+                            idle Image(img)
+                            hover Image(img)
+                            action [SetVariable("selected_coffee", c[0]), Return()]
+                            at transform:
+                                xysize (180, 180)
                     text c[0] xalign 0.5
 
 # 3. Customization Sliders
